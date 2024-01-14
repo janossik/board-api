@@ -23,10 +23,12 @@ export class AuthService {
     await this.userService.create(email, hashedPassword, permission);
   }
 
-  async signIn(email: string, password: string): Promise<any> {
+  async signIn(email: string, password: string) {
     const { token, ...user } = await this.validateUser(email, password);
-    return jwt.sign(user, token, {
-      expiresIn: '3h',
-    });
+    return {
+      access_token: jwt.sign(user, token, {
+        expiresIn: '3h',
+      }),
+    };
   }
 }

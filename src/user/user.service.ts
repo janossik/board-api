@@ -1,7 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { ParsedUtil } from '~/utils/parsed.util';
 
 import { User } from './user.entity';
 
@@ -12,8 +11,8 @@ export class UserService {
     private usersRepository: Repository<User>,
   ) {}
 
-  async findOne(id: string): Promise<User | undefined> {
-    return this.usersRepository.findOneByOrFail({ id: ParsedUtil.parseID(id) });
+  async findOne(id: number): Promise<User | undefined> {
+    return this.usersRepository.findOneByOrFail({ id });
   }
 
   async findOneByEmail(email: string): Promise<User | undefined> {
