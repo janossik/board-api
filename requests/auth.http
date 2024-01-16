@@ -1,0 +1,16 @@
+### POST
+
+POST http://localhost:3000/auth/signin
+Content-Type: application/json
+
+{
+  "email": "marcinczaniecki97@gmail.com",
+  "password": "superadmin"
+}
+
+### GET
+
+GET http://localhost:3000
+Content-Type: application/json
+Authorization: Bearer
+### Cii
