@@ -20,7 +20,7 @@ export class Board {
   createDate: Date;
 
   @Column({ nullable: true })
-  projectId?: number;
+  projectTag?: string;
 
   @ManyToMany(() => User)
   @JoinTable()
