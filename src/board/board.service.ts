@@ -22,11 +22,11 @@ export class BoardService {
     await this.boardRepository.delete(id);
   }
 
-  create(board: Board): Promise<Board> {
+  create(board: Omit<Board, 'id'>): Promise<Board> {
     return this.boardRepository.save(board);
   }
 
-  async update(where: FindOptionsWhere<Board>, board: Board): Promise<Board> {
+  async update(where: FindOptionsWhere<Board>, board: Partial<Omit<Board, 'id'>>): Promise<Board> {
     const toUpdate = await this.boardRepository.findOneBy(where);
     const updated = Object.assign(toUpdate, board);
     return this.boardRepository.save(updated);

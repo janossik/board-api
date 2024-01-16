@@ -25,4 +25,7 @@ export class Board {
   @ManyToMany(() => User)
   @JoinTable()
   users: User[];
+
+  @Column({ default: false })
+  deleted: boolean;
 }

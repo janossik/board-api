@@ -3,6 +3,7 @@ import { AuthGuard } from '~/auth/auth.guard';
 import { AuthService } from '~/auth/auth.service';
 import { Response } from 'express';
 import { Roles } from '~/roles/roles.decorator';
+import { Public } from '~/utils/public.util';
 
 @Controller('auth')
 export class AuthController {
@@ -13,7 +14,7 @@ export class AuthController {
   async signUp(@Body('email') email: string, @Body('password') password: string, @Body('permission') permission: number) {
     return this.authService.signUp(email, password, permission);
   }
-
+  @Public()
   @Post('signin')
   async signIn(@Body('email') email: string, @Body('password') password: string, @Res() response: Response) {
     const result = await this.authService.signIn(email, password);

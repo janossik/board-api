@@ -64,5 +64,5 @@ export class Task {
   attachmentPath?: string;
 
   @Column({ default: false })
-  deleted?: boolean;
+  deleted: boolean;
 }

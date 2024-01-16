@@ -18,15 +18,15 @@ export class TaskService {
     return this.tasksRepository.findOneBy(where);
   }
 
-  async remove(id: string): Promise<void> {
+  async remove(id: number): Promise<void> {
     await this.tasksRepository.delete(id);
   }
 
-  async create(task: Task): Promise<Task> {
+  async create(task: Omit<Task, 'id'>): Promise<Task> {
     return await this.tasksRepository.save(task);
   }
 
-  async update(id: string, task: Task): Promise<void> {
+  async update(id: string, task: Partial<Omit<Task, 'id'>>): Promise<void> {
     await this.tasksRepository.update(id, task);
   }
 }
